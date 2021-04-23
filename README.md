@@ -4,15 +4,15 @@ Projeto front-end de Poadcast com React e Next.js
 
 ## Installation
 
-Use npm para instalar as dependências.
+Use yarn para instalar as dependências.
 
 ```bash
-npm instal
+yarn install
 ```
 
 ## Usage
 
-Utilize Yarn para rodar o client e o server.
+Utilize yarn para rodar o client e o server.
 
 ```bash
 yarn dev
