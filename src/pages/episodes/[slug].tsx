@@ -8,6 +8,8 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 
 import style from './episode.module.scss';
+import { usePlayer } from '../../contexts/PlayerContext';
+import Head from 'next/head';
 
 type Episode = {
     id: string;
@@ -27,8 +29,18 @@ type EpisodeProps = {
 
 export default function Episode({episode}: EpisodeProps){
     const route = useRouter();
+
+    const { play } = usePlayer();
+
     return (
         <div className={style.episode}>
+
+            <Head>
+                <title>
+                Podcastr - {episode.title}
+                </title>
+             </Head>
+
             <div className={style.thumbnailContainer}>
                 <Link href='/'>
                     <button type="button">
@@ -36,7 +48,7 @@ export default function Episode({episode}: EpisodeProps){
                     </button>
                 </Link>
                 <Image width={700} height={350} src={episode.thumbnail} alt={episode.title} objectFit='cover'/>
-                <button>
+                <button type="button" onClick={()=>play(episode)}>
                     <img src="/play.svg" alt="Tocar episódio"/>
                 </button>
             </div>
